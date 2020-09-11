@@ -482,7 +482,7 @@ class MRI_FID_Widget(MRI_FID_Widget_Base, MRI_FID_Widget_Form):
         self.curve_bottom = self.axes_bottom.plot(self.time_axis, self.real_t, linewidth=1)  # red
         self.curve_bottom = self.axes_bottom.plot(self.time_axis, self.imag_t, linewidth=1)  # green
         self.axes_bottom.set_xlabel('time [ms]')
-
+        self.axes_bottom.set_xlim([0, 2.0])
         # Plot the top (frequency domain): use signal from 0.5~20.5ms: first 0.5ms junk
         # update: the junk is already taken care of by the sequence timing
         if not self.zoomCheckBox.isChecked():  # non zoomed
