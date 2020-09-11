@@ -1,5 +1,4 @@
-
-#!/usr/bin/env python
+# !/usr/bin/env python
 
 # import general packages
 from basicpara import parameters
@@ -31,6 +30,7 @@ from PyQt5.QtNetwork import QAbstractSocket, QTcpSocket
 import numpy as np
 import scipy.io as sp
 import matplotlib
+
 matplotlib.use('Qt5Agg')
 
 # import GUI classes
@@ -41,6 +41,7 @@ matplotlib.use('Qt5Agg')
 # load .ui files for different pages
 Main_Window_Form, Main_Window_Base = loadUiType('ui/mainWindow.ui')
 Config_Dialog_Form, Config_Dialog_Base = loadUiType('ui/configDialog.ui')
+
 
 # main window
 class MainWindow(Main_Window_Base, Main_Window_Form):
@@ -211,7 +212,8 @@ class MainWindow(Main_Window_Base, Main_Window_Form):
         self.mriRtWidget.freqValue.setValue(parameters.get_freq())
         self.setWindowTitle('MRI tabletop - Sequence Design GUI')
 
-#-------------------------------------------------------------------------------
+
+# -------------------------------------------------------------------------------
 
 # configuration dialog
 class ConfigDialog(Config_Dialog_Base, Config_Dialog_Form):
@@ -254,7 +256,6 @@ class ConfigDialog(Config_Dialog_Base, Config_Dialog_Form):
         self.connectButton.setEnabled(False)
         gsocket.connectToHost(self.addrValue.text(), 1001)
 
-
         # Add timeout for connection
 
     def socket_connected(self):
@@ -263,7 +264,6 @@ class ConfigDialog(Config_Dialog_Base, Config_Dialog_Form):
         self.connected_label.setVisible(True)
         self.mainWindow.show()
         self.close()
-
 
     def socket_error(self, socketError):
         if socketError == QAbstractSocket.RemoteHostClosedError:
@@ -282,13 +282,15 @@ class ConfigDialog(Config_Dialog_Base, Config_Dialog_Form):
         # self.connectButton.setEnabled(True)
         # this still cannot solve the waiting problem
 
-#-------------------------------------------------------------------------------
+
+# -------------------------------------------------------------------------------
 
 def run():
     app = QApplication(sys.argv)
     MRILab = MainWindow()
     # MRILab.show()
     sys.exit(app.exec_())
+
 
 # main function
 if __name__ == '__main__':
