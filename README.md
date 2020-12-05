@@ -1,1 +1,1 @@
-# ocra
+# ocra (Tabletop MRI scanner)
